@@ -37,12 +37,7 @@ var ddns_prov2 = '<% nvram_get_x("","ddns2_server"); %>';
 var ddns_hname = '<% nvram_get_x("","ddns_hostname_x"); %>';
 var ddns_list = [
 	[ 0x01, "WWW.ASUS.COM",         "(asuscomm)", "" ],
-	[ 0x0f, "WWW.DNSPOD.CN",         "(need https)", "https://www.dnspod.cn/console/user/security" ],
-	[ 0x0f, "WWW.ALIYUN.COM",         "", "https://wanwang.aliyun.com/domain/dns/" ],
-	[ 0x0f, "WWW.PUBYUN.COM",         "(3322.org)", "http://www.pubyun.com/user/" ],
-	[ 0x0f, "WWW.ORAY.COM",         "(no https)", "http://hsk.oray.com/console/manage/" ],
-	[ 0x0f, "WWW.DYNU.COM",         "", "https://www.dynu.com/en-US/ControlPanel/AddDDNS" ],
-	[ 0x0f, "WWW.DYNDNS.ORG",       "", "https://account.dyn.com/entrance/" ],
+	[ 0x0f, "WWW.PUBYUN.COM",       "(3322.org)", "http://www.pubyun.com/user/" ],
 	[ 0x0f, "WWW.TZO.COM",          "", "http://signup.tzo.com" ],
 	[ 0x0f, "WWW.ZONEEDIT.COM",     "", "http://www.zoneedit.com/signUp.html" ],
 	[ 0x01, "WWW.EASYDNS.COM",      "", "https://web.easydns.com/Open_Account/" ],
@@ -138,60 +133,6 @@ function disable_update()
 	document.form.x_DDNSStatus.disabled = 1;
 }
 
-function ihacklog_fix_speical_ddns(v, ddns_index) {
-    if (ddns_index == 2) {
-        $ddns_user_link = $j('#row_ddns2_user th a');
-        $ddns_pass_link = $j('#row_ddns2_pass th a');
-        $ddns_ssl = $j('select[name=ddns2_ssl]');
-    } else {
-        $ddns_user_link = $j('#row_ddns_user th a');
-        $ddns_pass_link = $j('#row_ddns_pass th a');
-        $ddns_ssl = $j('select[name=ddns_ssl]');
-    }
-    //dnspod.cn use api,token and must use https
-    if (v == "WWW.DNSPOD.CN") {
-        $ddns_user_link.text("API Token ID:");
-        $ddns_pass_link.text("API Token:");
-        $ddns_ssl.val(1);
-        //$ddns_ssl.change();
-        $ddns_ssl.attr('readonly', true);
-    }
-
-    //aliyun dns
-    if (v == "WWW.ALIYUN.COM") {
-        $ddns_user_link.text("Access Key ID:");
-        $ddns_pass_link.text("Access Key Secret:");
-    }
-
-    //oray.com does not support https
-    if (v == "WWW.ORAY.COM") {
-        $ddns_ssl.val(0);
-        //$ddns_ssl.change();
-        $ddns_ssl.attr('readonly', true);
-    }
-
-    if (v == "WWW.ORAY.COM" || v == "WWW.PUBYUN.COM") {
-        $ddns_user_link.text("<#LANHostConfig_x_DDNSUserName_itemname#>");
-        $ddns_pass_link.text("<#LANHostConfig_x_DDNSPassword_itemname#>");
-    }
-
-    // 3322 and aliyun support both http and https
-    if (v == "WWW.PUBYUN.COM" || v == "WWW.ALIYUN.COM") {
-        $ddns_ssl.removeAttr('readonly');
-    }
-
-    if (v == "WWW.DNSPOD.CN" || v == "WWW.ALIYUN.COM" || v == "WWW.ORAY.COM" || v == "WWW.PUBYUN.COM") {
-        showhide_div("row_ddns_hname2", 0);
-        showhide_div("row_ddns_hname3", 0);
-    } else {
-        $ddns_ssl.removeAttr('readonly');
-        $ddns_ssl.val(1);
-        //$ddns_ssl.change();
-        $ddns_user_link.text("<#LANHostConfig_x_DDNSUserName_itemname#>");
-        $ddns_pass_link.text("<#LANHostConfig_x_DDNSPassword_itemname#>");
-    }
-}
-
 function change_ddns_server(man)
 {
 	var v = document.form.ddns_server_x.value;
@@ -215,9 +156,6 @@ function change_ddns_server(man)
 	e = (v == "CUSTOM") ? 1 : 0;
 	showhide_div("row_ddns_cst_svr", e);
 	showhide_div("row_ddns_cst_url", e);
-
-    ihacklog_fix_speical_ddns(v, 1);
-
 	if (man)
 		disable_update();
 }
@@ -233,9 +171,6 @@ function change_ddns2_server(man)
 	showhide_div("row_ddns2_user", e);
 	showhide_div("row_ddns2_pass", e);
 	showhide_div("row_ddns2_ssl", (e && support_ddns_ssl()));
-
-    ihacklog_fix_speical_ddns(v, 2);
-
 	if (man)
 		disable_update();
 }
@@ -584,7 +519,7 @@ function checkDDNSReturnCode(){
                                             <th><a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,24,2);"><#LANHostConfig_x_DDNSPassword_itemname#></a></th>
                                             <td>
                                                 <div class="input-append">
-                                                    <input type="password" maxlength="64" class="input" size="32" name="ddns_passwd_x" id="ddns_passwd_x" style="width: 252px;" value="<% nvram_get_x("","ddns_passwd_x"); %>" />
+                                                    <input type="password" maxlength="64" class="input" size="32" name="ddns_passwd_x" id="ddns_passwd_x" style="width: 175px;" value="<% nvram_get_x("","ddns_passwd_x"); %>" />
                                                     <button style="margin-left: -5px;" class="btn" type="button" onclick="passwordShowHide('ddns_passwd_x')"><i class="icon-eye-close"></i></button>
                                                 </div>
                                             </td>
@@ -637,7 +572,7 @@ function checkDDNSReturnCode(){
                                             <th><a class="help_tooltip" href="javascript:void(0);" onmouseover="openTooltip(this,24,2);"><#LANHostConfig_x_DDNSPassword_itemname#></a></th>
                                             <td>
                                                 <div class="input-append">
-                                                    <input type="password" maxlength="64" class="input" size="32" name="ddns2_pass" id="ddns2_pass" style="width: 252px;" value="<% nvram_get_x("","ddns2_pass"); %>">
+                                                    <input type="password" maxlength="64" class="input" size="32" name="ddns2_pass" id="ddns2_pass" style="width: 175px;" value="<% nvram_get_x("","ddns2_pass"); %>">
                                                     <button style="margin-left: -5px;" class="btn" type="button" onclick="passwordShowHide('ddns2_pass')"><i class="icon-eye-close"></i></button>
                                                 </div>
                                             </td>
@@ -685,10 +620,6 @@ function checkDDNSReturnCode(){
                                                     <option value="11" <% nvram_match_x("", "ddns_checkip", "11","selected"); %>>ipv4.wtfismyip.com/text</option>
                                                     <option value="12" <% nvram_match_x("", "ddns_checkip", "12","selected"); %>>ipv4.nsupdate.info/myip</option>
                                                     <option value="13" <% nvram_match_x("", "ddns_checkip", "13","selected"); %>>myip.dtdns.com</option>
-                                                    <option value="14" <% nvram_match_x("", "ddns_checkip", "14","selected"); %>>ddns.oray.com/checkip</option>
-                                                    <option value="15" <% nvram_match_x("", "ddns_checkip", "15","selected"); %>>tool.80x86.io/net/ip.php</option>
-                                                    <option value="16" <% nvram_match_x("", "ddns_checkip", "16","selected"); %>>ip.3322.net</option>
-                                                    <option value="17" <% nvram_match_x("", "ddns_checkip", "17","selected"); %>>whatismyip.akamai.com</option>
                                                 </select>
                                             </td>
                                         </tr>
