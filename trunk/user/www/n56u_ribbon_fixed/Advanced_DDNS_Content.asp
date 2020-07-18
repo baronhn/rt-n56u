@@ -64,7 +64,7 @@ var ddns_list = [
 	[ 0x0f, "TB.NETASSIST.UA",      "", "http://tb.netassist.ua/reg.php" ],
 	[ 0x0f, "IPV4.NSUPDATE.INFO",   "", "https://nsupdate.info/account/register/" ],
 	[ 0x0f, "FREEDNS.AFRAID.ORG",   "", "http://freedns.afraid.org/signup/" ],
-	[ 0x0f, "WWW.PUBYUN.COM",     "(3322.net)", "http://www.pubyun.com/user/" ],
+	[ 0x0f, "3322.ORG",             "(China)", "http://3322.org/" ],
 	[ 0x01, "CUSTOM",               "(http basic auth)", "" ]
 ];
 
@@ -153,11 +153,6 @@ function change_ddns_server(man)
 
 	e = (v == "WWW.EASYDNS.COM") ? 1 : 0;
 	showhide_div("row_ddns_wcard", e);
-
-
-        e = (v  == "WWW.PUBYUN.COM") ? 1 : 0;
-        showhide_div("row_ddns_hname2", 0);
-        showhide_div("row_ddns_hname3", 0);
 
 	e = (v == "CUSTOM") ? 1 : 0;
 	showhide_div("row_ddns_cst_svr", e);
@@ -334,7 +329,7 @@ function validForm(){
 				o4.select();
 				return false;
 			}else{
-				o3.value = "members.3322.net";
+				o3.value = o4.value+".asuscomm.com";
 			}
 		}else{
 			if(o3.value == ""){
@@ -452,7 +447,7 @@ function checkDDNSReturnCode(){
                             <div class="round_bottom">
                                 <div class="row-fluid">
                                     <div id="tabMenu" class="submenuBlock"></div>
-                                    <div class="alert alert-info" style="margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc#></div>
+                                    <div class="alert alert-info" style="margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc#><div>如何在路由器中设置花生壳服务：<a href="http://service.oray.com/question/868.html" target="blank">http://service.oray.com/question/868.html</a></div></div>
                                     <div id="wan_ip_hide2" class="alert alert-danger" style="display:none; margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc2#></div>
                                     <div id="wan_ip_hide3" class="alert alert-danger" style="display:none; margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc3#></div>
 
@@ -613,9 +608,21 @@ function checkDDNSReturnCode(){
                                             <td>
                                                 <select name="ddns_checkip" class="input" onchange="disable_update();">
                                                     <option value="0" <% nvram_match_x("", "ddns_checkip", "0","selected"); %>><#DDNS_CheckIP_item0#></option>
-                                                    <option value="14" <% nvram_match_x("", "ddns_checkip", "14","selected"); %>>ip.3322.net</option>
-
-
+                                                    <option value="1" <% nvram_match_x("", "ddns_checkip", "1","selected"); %>>checkip.dyndns.org</option>
+                                                    <option value="2" <% nvram_match_x("", "ddns_checkip", "2","selected"); %>>checkip.dyndns.org:8245</option>
+                                                    <option value="3" <% nvram_match_x("", "ddns_checkip", "3","selected"); %>>echo.tzo.com</option>
+                                                    <option value="4" <% nvram_match_x("", "ddns_checkip", "4","selected"); %>>ip.dnsexit.com</option>
+                                                    <option value="5" <% nvram_match_x("", "ddns_checkip", "5","selected"); %>>ip.changeip.com</option>
+                                                    <option value="6" <% nvram_match_x("", "ddns_checkip", "6","selected"); %>>myip.dnsomatic.com</option>
+                                                    <option value="7" <% nvram_match_x("", "ddns_checkip", "7","selected"); %>>ip1.dynupdate.no-ip.com</option>
+                                                    <option value="8" <% nvram_match_x("", "ddns_checkip", "8","selected"); %>>checkip.dns.he.net</option>
+                                                    <option value="9" <% nvram_match_x("", "ddns_checkip", "9","selected"); %>>checkip.zerigo.com</option>
+                                                    <option value="10" <% nvram_match_x("", "ddns_checkip", "10","selected"); %>>checkip.two-dns.de</option>
+                                                    <option value="11" <% nvram_match_x("", "ddns_checkip", "11","selected"); %>>ipv4.wtfismyip.com/text</option>
+                                                    <option value="12" <% nvram_match_x("", "ddns_checkip", "12","selected"); %>>ipv4.nsupdate.info/myip</option>
+                                                    <option value="13" <% nvram_match_x("", "ddns_checkip", "13","selected"); %>>myip.dtdns.com</option>
+                                                    <option value="14" <% nvram_match_x("", "ddns_checkip", "14","selected"); %>>members.3322.org/dyndns/getip</option>
+                                                    <option value="15" <% nvram_match_x("", "ddns_checkip", "15","selected"); %>>ip.3322.net</option>
                                                 </select>
                                             </td>
                                         </tr>
