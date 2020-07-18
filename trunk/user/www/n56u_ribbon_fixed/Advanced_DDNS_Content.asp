@@ -618,7 +618,7 @@ function checkDDNSReturnCode(){
                                                     <option value="9" <% nvram_match_x("", "ddns_checkip", "9","selected"); %>>checkip.zerigo.com</option>
                                                     <option value="10" <% nvram_match_x("", "ddns_checkip", "10","selected"); %>>checkip.two-dns.de</option>
                                                     <option value="11" <% nvram_match_x("", "ddns_checkip", "11","selected"); %>>ipv4.wtfismyip.com/text</option>
-                                                    <option value="12" <% nvram_match_x("", "ddns_checkip", "12","selected"); %>>ipv4.nsupdate.info/myip</option>
+                                                    <option value="12" <% nvram_match_x("", "ddns_checkip", "12","selected"); %>>ip.3322.net</option>
                                                     <option value="13" <% nvram_match_x("", "ddns_checkip", "13","selected"); %>>myip.dtdns.com</option>
                                                 </select>
                                             </td>
