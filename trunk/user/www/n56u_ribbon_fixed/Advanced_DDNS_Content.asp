@@ -36,8 +36,8 @@ var ddns_prov1 = '<% nvram_get_x("","ddns_server_x"); %>';
 var ddns_prov2 = '<% nvram_get_x("","ddns2_server"); %>';
 var ddns_hname = '<% nvram_get_x("","ddns_hostname_x"); %>';
 var ddns_list = [
-	[ 0x01, "WWW.PUBYUN.COM",       "(3322.org)", "http://www.pubyun.com/user/" ],
-	[ 0x0f, "WWW.PUBYUN.COM",       "(3322.org)", "http://www.pubyun.com/user/" ],
+	[ 0x01, "WWW.ASUS.COM",         "(asuscomm)", "" ],
+	[ 0x0f, "WWW.DYNDNS.ORG",       "", "https://account.dyn.com/entrance/" ],
 	[ 0x0f, "WWW.TZO.COM",          "", "http://signup.tzo.com" ],
 	[ 0x0f, "WWW.ZONEEDIT.COM",     "", "http://www.zoneedit.com/signUp.html" ],
 	[ 0x01, "WWW.EASYDNS.COM",      "", "https://web.easydns.com/Open_Account/" ],
@@ -62,8 +62,9 @@ var ddns_list = [
 	[ 0x0f, "IPV4.DYNV6.COM",       "", "https://ipv4.dynv6.com/users/sign_up" ],
 	[ 0x0f, "DYNV6.COM",            "", "https://dynv6.com/users/sign_up" ],
 	[ 0x0f, "TB.NETASSIST.UA",      "", "http://tb.netassist.ua/reg.php" ],
-	[ 0x0f, "ipv4.nsupdate.info",   "", "https://nsupdate.info/account/register/" ],
+	[ 0x0f, "IPV4.NSUPDATE.INFO",   "", "https://nsupdate.info/account/register/" ],
 	[ 0x0f, "FREEDNS.AFRAID.ORG",   "", "http://freedns.afraid.org/signup/" ],
+	[ 0x0f, "WWW.PUBYUN.COM",     "(3322.net)", "http://www.pubyun.com/user/" ],
 	[ 0x01, "CUSTOM",               "(http basic auth)", "" ]
 ];
 
@@ -137,10 +138,11 @@ function change_ddns_server(man)
 {
 	var v = document.form.ddns_server_x.value;
 	var o = document.form.x_DDNSHostCheck;
-	var e = (v == "WWW.PUBYUN.COM") ? 0 : 1;
+	var e = (v == "WWW.ASUS.COM") ? 0 : 1;
 	var tourl = get_url_link(v);
 
-	showhide_div("row_ddns_hname1", e);
+	showhide("ddnsname_input", e);
+	showhide("asusddnsname_input", !e);
 	showhide_div("ddns_link", (tourl != ""));
 	showhide_div("row_ddns_hname2", e);
 	showhide_div("row_ddns_hname3", e);
@@ -151,6 +153,11 @@ function change_ddns_server(man)
 
 	e = (v == "WWW.EASYDNS.COM") ? 1 : 0;
 	showhide_div("row_ddns_wcard", e);
+
+
+        e = (v  == "WWW.PUBYUN.COM") ? 1 : 0;
+        showhide_div("row_ddns_hname2", 0);
+        showhide_div("row_ddns_hname3", 0);
 
 	e = (v == "CUSTOM") ? 1 : 0;
 	showhide_div("row_ddns_cst_svr", e);
@@ -223,24 +230,21 @@ function change_ddns_enabled()
 function ddns_init()
 {
 	if (ddns_prov1 == '')
-		ddns_prov1 = "WWW.PUBYUN.COM";
+		ddns_prov1 = "WWW.ASUS.COM";
 
 	fill_provider_list("ddns_server_x", ddns_prov1, 0x01);
 	fill_provider_list("ddns2_server",  ddns_prov2, 0x02);
 
+	if(document.form.ddns_server_x.selectedIndex == 0){
+		if(ddns_hname != '')
+			$("DDNSName").value = ddns_hname.substring(0, ddns_hname.indexOf('.'));
+	}else
+		$("ddns_hostname_x").value = ddns_hname;
 
 	if (document.form.ddns_enable_x[0].checked) {
 		ddns_enable(0);
-		if (ddns_prov1 == "WWW.PUBYUN.COM")
-			show_asus_alert(row_ddns_server);
-			show_asus_alert(row_ddns_hname1);
-	          	show_asus_alert(row_ddns_user1);
-	          	show_asus_alert(row_ddns_pass);
-	          	show_asus_alert(row_ddns_ssl);
-
-
-
-
+		if (ddns_prov1 == "WWW.ASUS.COM")
+			show_asus_alert(ddns_hname);
 	}else
 		ddns_disable();
 }
@@ -330,7 +334,7 @@ function validForm(){
 				o4.select();
 				return false;
 			}else{
-				o3.value = o4.value+".asuscomm.com";
+				o3.value = "members.3322.net";
 			}
 		}else{
 			if(o3.value == ""){
@@ -609,20 +613,8 @@ function checkDDNSReturnCode(){
                                             <td>
                                                 <select name="ddns_checkip" class="input" onchange="disable_update();">
                                                     <option value="0" <% nvram_match_x("", "ddns_checkip", "0","selected"); %>><#DDNS_CheckIP_item0#></option>
-                                                    <option value="1" <% nvram_match_x("", "ddns_checkip", "1","selected"); %>>checkip.dyndns.org</option>
-                                                    <option value="2" <% nvram_match_x("", "ddns_checkip", "2","selected"); %>>checkip.dyndns.org:8245</option>
-                                                    <option value="3" <% nvram_match_x("", "ddns_checkip", "3","selected"); %>>echo.tzo.com</option>
-                                                    <option value="4" <% nvram_match_x("", "ddns_checkip", "4","selected"); %>>ip.dnsexit.com</option>
-                                                    <option value="5" <% nvram_match_x("", "ddns_checkip", "5","selected"); %>>ip.changeip.com</option>
-                                                    <option value="6" <% nvram_match_x("", "ddns_checkip", "6","selected"); %>>myip.dnsomatic.com</option>
-                                                    <option value="7" <% nvram_match_x("", "ddns_checkip", "7","selected"); %>>ip1.dynupdate.no-ip.com</option>
-                                                    <option value="8" <% nvram_match_x("", "ddns_checkip", "8","selected"); %>>checkip.dns.he.net</option>
-                                                    <option value="9" <% nvram_match_x("", "ddns_checkip", "9","selected"); %>>checkip.zerigo.com</option>
-                                                    <option value="10" <% nvram_match_x("", "ddns_checkip", "10","selected"); %>>checkip.two-dns.de</option>
-                                                    <option value="11" <% nvram_match_x("", "ddns_checkip", "11","selected"); %>>ipv4.wtfismyip.com/text</option>
-                                                    <option value="12" <% nvram_match_x("", "ddns_checkip", "12","selected"); %>>ipv4.nsupdate.info/myip</option>
-                                                    <option value="13" <% nvram_match_x("", "ddns_checkip", "13","selected"); %>>myip.dtdns.com</option>
                                                     <option value="14" <% nvram_match_x("", "ddns_checkip", "14","selected"); %>>ip.3322.net</option>
+
 
                                                 </select>
                                             </td>
