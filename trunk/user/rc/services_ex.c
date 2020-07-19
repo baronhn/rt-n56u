@@ -877,7 +877,7 @@ static const struct inadyn_system_t {
 	{ "WWW.DHIS.ORG",         "default@dhis.org"           },
 	{ "WWW.NIC.RU",           "default@nic.ru"             },
 	{ "WWW.DUCKDNS.ORG",      "default@duckdns.org"        },
-	{ "WWW.DTDNS.COM",        "default@dtdns.com"          },
+	{ "WWW.PUBYUN.COM",       "default@pubyun.com"         },
 	{ "WWW.OVH.COM",          "default@ovh.com"            },
 	{ "WWW.LOOPIA.COM",       "default@loopia.com"         },
 	{ "WWW.DUIADNS.NET",      "default@duiadns.net"        },
@@ -891,8 +891,6 @@ static const struct inadyn_system_t {
 	{ "TB.NETASSIST.UA",      "ipv6tb@netassist.ua"        },
 	{ "IPV4.NSUPDATE.INFO",   "ipv4@nsupdate.info"         },
 	{ "FREEDNS.AFRAID.ORG",   "default@freedns.afraid.org" },
-	{ "3322.ORG",             "default@3322.org"           },
-	{ "WWW.PUBYUN.COM",       "defaule@pubyun.com"         },
 	{ "CUSTOM",               "custom@http_srv_basic_auth" },
 	{ NULL, NULL }
 };
@@ -912,9 +910,7 @@ inadyn_checkip_url[] = {
 	"checkip.two-dns.de /",
 	"ipv4.wtfismyip.com /text",
 	"ipv4.nsupdate.info /myip",
-	"myip.dtdns.com /",
-	"members.3322.org /",
-	"ip.3322.net /",
+	"members.3322.net /",
 };
 
 static const char *
