@@ -65,6 +65,7 @@ var ddns_list = [
 	[ 0x0f, "IPV4.NSUPDATE.INFO",   "", "https://nsupdate.info/account/register/" ],
 	[ 0x0f, "FREEDNS.AFRAID.ORG",   "", "http://freedns.afraid.org/signup/" ],
 	[ 0x0f, "3322.ORG",             "(China)", "http://3322.org/" ],
+	[ 0x0f, "WWW.PUBYUN.COM",         "(3322.org)", "http://www.pubyun.com/user/" ],
 	[ 0x01, "CUSTOM",               "(http basic auth)", "" ]
 ];
 
@@ -447,7 +448,7 @@ function checkDDNSReturnCode(){
                             <div class="round_bottom">
                                 <div class="row-fluid">
                                     <div id="tabMenu" class="submenuBlock"></div>
-                                    <div class="alert alert-info" style="margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc#><div>如何在路由器中设置花生壳服务：<a href="http://service.oray.com/question/868.html" target="blank">http://service.oray.com/question/868.html</a></div></div>
+                                    <div class="alert alert-info" style="margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc#></div>
                                     <div id="wan_ip_hide2" class="alert alert-danger" style="display:none; margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc2#></div>
                                     <div id="wan_ip_hide3" class="alert alert-danger" style="display:none; margin: 10px;"><#LANHostConfig_x_DDNSEnable_sectiondesc3#></div>
 
