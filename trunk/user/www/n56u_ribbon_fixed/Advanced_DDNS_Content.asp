@@ -50,7 +50,7 @@ var ddns_list = [
 	[ 0x0f, "WWW.DHIS.ORG",         "", "http://dhis.org/WebEngine.ipo?context=dhis.website.register" ],
 	[ 0x0f, "WWW.NIC.RU",           "(RU-CENTER)", "https://www.nic.ru/dns/service/dns_hosting/dns_master/dynamic_dns.html" ],
 	[ 0x0f, "WWW.DUCKDNS.ORG",      "", "https://www.duckdns.org/" ],
-	[ 0x0f, "WWW.DTDNS.COM",        "", "https://www.dtdns.com/dtsite/register" ],
+	[ 0x0f, "WWW.PUBYUN.COM",       "(3322.org)", "http://www.pubyun.com/user/" ],
 	[ 0x0f, "WWW.OVH.COM",          "", "https://www.ovh.com/" ],
 	[ 0x0f, "WWW.LOOPIA.COM",       "", "https://www.loopia.com/loopiadns/" ],
 	[ 0x0f, "WWW.DUIADNS.NET",      "", "https://www.duiadns.net/services" ],
@@ -64,8 +64,6 @@ var ddns_list = [
 	[ 0x0f, "TB.NETASSIST.UA",      "", "http://tb.netassist.ua/reg.php" ],
 	[ 0x0f, "IPV4.NSUPDATE.INFO",   "", "https://nsupdate.info/account/register/" ],
 	[ 0x0f, "FREEDNS.AFRAID.ORG",   "", "http://freedns.afraid.org/signup/" ],
-	[ 0x0f, "3322.ORG",             "(China)", "http://3322.org/" ],
-	[ 0x0f, "WWW.PUBYUN.COM",       "(3322.org)", "http://www.pubyun.com/user/" ],
 	[ 0x01, "CUSTOM",               "(http basic auth)", "" ]
 ];
 
@@ -621,9 +619,7 @@ function checkDDNSReturnCode(){
                                                     <option value="10" <% nvram_match_x("", "ddns_checkip", "10","selected"); %>>checkip.two-dns.de</option>
                                                     <option value="11" <% nvram_match_x("", "ddns_checkip", "11","selected"); %>>ipv4.wtfismyip.com/text</option>
                                                     <option value="12" <% nvram_match_x("", "ddns_checkip", "12","selected"); %>>ipv4.nsupdate.info/myip</option>
-                                                    <option value="13" <% nvram_match_x("", "ddns_checkip", "13","selected"); %>>myip.dtdns.com</option>
-                                                    <option value="14" <% nvram_match_x("", "ddns_checkip", "14","selected"); %>>members.3322.org/dyndns/getip</option>
-                                                    <option value="15" <% nvram_match_x("", "ddns_checkip", "15","selected"); %>>ip.3322.net</option>
+                                                    <option value="13" <% nvram_match_x("", "ddns_checkip", "13","selected"); %>>ip.3322.net</option>
                                                 </select>
                                             </td>
                                         </tr>
