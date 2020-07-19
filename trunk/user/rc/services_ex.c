@@ -877,7 +877,7 @@ static const struct inadyn_system_t {
 	{ "WWW.DHIS.ORG",         "default@dhis.org"           },
 	{ "WWW.NIC.RU",           "default@nic.ru"             },
 	{ "WWW.DUCKDNS.ORG",      "default@duckdns.org"        },
-	{ "WWW.PUBYUN.COM",       "default@pubyun.com"         },
+	{ "WWW.PUBYUN.COM",       "dyndns@3322.org"            },
 	{ "WWW.OVH.COM",          "default@ovh.com"            },
 	{ "WWW.LOOPIA.COM",       "default@loopia.com"         },
 	{ "WWW.DUIADNS.NET",      "default@duiadns.net"        },
