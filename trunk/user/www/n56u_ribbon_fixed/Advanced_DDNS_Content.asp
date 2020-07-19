@@ -65,7 +65,7 @@ var ddns_list = [
 	[ 0x0f, "IPV4.NSUPDATE.INFO",   "", "https://nsupdate.info/account/register/" ],
 	[ 0x0f, "FREEDNS.AFRAID.ORG",   "", "http://freedns.afraid.org/signup/" ],
 	[ 0x0f, "3322.ORG",             "(China)", "http://3322.org/" ],
-	[ 0x0f, "WWW.PUBYUN.COM",         "(3322.org)", "http://www.pubyun.com/user/" ],
+	[ 0x0f, "WWW.PUBYUN.COM",       "(3322.org)", "http://www.pubyun.com/user/" ],
 	[ 0x01, "CUSTOM",               "(http basic auth)", "" ]
 ];
 
