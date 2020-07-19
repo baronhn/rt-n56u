@@ -910,7 +910,7 @@ inadyn_checkip_url[] = {
 	"checkip.two-dns.de /",
 	"ipv4.wtfismyip.com /text",
 	"ipv4.nsupdate.info /myip",
-	"members.3322.net /",
+	"members.3322.net:443 /",
 };
 
 static const char *
