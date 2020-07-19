@@ -892,7 +892,7 @@ static const struct inadyn_system_t {
 	{ "IPV4.NSUPDATE.INFO",   "ipv4@nsupdate.info"         },
 	{ "FREEDNS.AFRAID.ORG",   "default@freedns.afraid.org" },
 	{ "3322.ORG",             "default@3322.org"           },
-	{ "WWW.PUBYUN.COM"        "defaule@pubyun.com         "},
+	{ "WWW.PUBYUN.COM",       "defaule@pubyun.com"         },
 	{ "CUSTOM",               "custom@http_srv_basic_auth" },
 	{ NULL, NULL }
 };
